@@ -1,0 +1,44 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.2.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.kinesis'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	
+	// AWS Kinesis Producer Library
+	compile group: 'com.amazonaws', name: 'amazon-kinesis-producer', version: '0.12.9'
+	
+	// Project Lombok
+	compile group: 'org.projectlombok', name: 'lombok', version: '1.16.22'
+	
+	// Spring Boot Configuration Processor
+	compile "org.springframework.boot:spring-boot-configuration-processor"
+	
+	// Spring Boot Developer Tools
+	compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.0.2.RELEASE'
+	
+	
+}
